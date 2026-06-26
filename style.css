@@ -1,0 +1,243 @@
+/* ========== GLOBAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0A1A3A 0%, #1a2f5a 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    background: white;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px 30px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== HEADER ========== */
+h1 {
+    color: #0A1A3A;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+/* ========== INPUT SECTION ========== */
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#taskInput:focus {
+    border-color: #0A1A3A;
+    box-shadow: 0 0 0 3px rgba(10, 26, 58, 0.1);
+}
+
+#addBtn {
+    padding: 15px 30px;
+    background: #0A1A3A;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+#addBtn:hover {
+    background: #162d52;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(10, 26, 58, 0.3);
+}
+
+#addBtn:active {
+    transform: translateY(0);
+}
+
+/* ========== TASK LIST ========== */
+#taskList {
+    list-style: none;
+}
+
+.task-item {
+    background: #f8f9fa;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    animation: taskSlideIn 0.4s ease-out;
+    border: 2px solid transparent;
+}
+
+@keyframes taskSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.task-item:hover {
+    background: #e9ecef;
+    border-color: #0A1A3A;
+}
+
+/* ========== CHECKBOX ========== */
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #0A1A3A;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.task-checkbox:hover {
+    background: rgba(10, 26, 58, 0.1);
+}
+
+.task-checkbox.checked {
+    background: #0A1A3A;
+}
+
+.task-checkbox.checked::after {
+    content: "✓";
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ========== TASK TEXT ========== */
+.task-text {
+    flex: 1;
+    color: #333;
+    font-size: 1rem;
+    word-break: break-word;
+    transition: all 0.3s ease;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: #999;
+    opacity: 0.6;
+}
+
+/* ========== DELETE BUTTON ========== */
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+/* ========== DELETE ANIMATION ========== */
+.task-item.removing {
+    animation: taskSlideOut 0.4s ease-out forwards;
+}
+
+@keyframes taskSlideOut {
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* ========== EMPTY STATE ========== */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.empty-state span {
+    font-size: 3rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .input-section {
+        flex-direction: column;
+    }
+
+    #addBtn {
+        width: 100%;
+    }
+
+    .task-item {
+        padding: 15px;
+    }
+}
